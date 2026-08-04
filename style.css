@@ -786,6 +786,7 @@ a { color: inherit; }
     overflow: hidden;
 }
 .course-hero-media > i { font-size: 5rem; opacity: 0.85; }
+.course-hero-media > img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .course-hero-media .cap {
     position: absolute;
     bottom: 22px; left: 22px; right: 22px;
@@ -809,6 +810,9 @@ a { color: inherit; }
 /* Overview / description */
 .overview-grid { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 3.5rem; align-items: start; }
 .overview-grid .prose p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.1rem; }
+.overview-grid .prose h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
+.overview-grid .prose ul { color: var(--text-muted); font-size: 1.05rem; margin: 0 0 1.1rem 1.2rem; padding-left: 0.6rem; }
+.overview-grid .prose ul li { margin-bottom: 0.45rem; }
 .outcomes {
     background: var(--cream);
     border: 1px solid var(--border);
@@ -912,6 +916,7 @@ a { color: inherit; }
     overflow: hidden;
 }
 .instructor-photo i { font-size: 3.5rem; opacity: 0.9; }
+.instructor-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .instructor-info h3 { color: var(--ink-deep); margin-bottom: 0.3rem; }
 .instructor-info .role { color: var(--accent-dark); font-weight: 600; font-size: 0.95rem; margin-bottom: 1rem; }
 .instructor-info p { color: var(--text-muted); margin-bottom: 1rem; }
