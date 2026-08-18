@@ -1042,6 +1042,65 @@ a { color: inherit; }
 .form-card .btn { width: 100%; justify-content: center; margin-top: 0.5rem; }
 .form-note { font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 1rem; }
 
+/* Locked "Referred by" field (arrived via referral link) */
+.form-field input.is-locked {
+    background: var(--cream-2);
+    color: var(--ink-deep);
+    font-weight: 600;
+    cursor: default;
+}
+
+/* ============================ Enrolment success + referral ============================ */
+.enroll-success { text-align: center; }
+.enroll-success .success-icon {
+    width: 68px; height: 68px; margin: 0 auto 1.1rem;
+    display: grid; place-items: center;
+    border-radius: var(--radius-full);
+    background: rgba(193, 150, 47, 0.12);
+    color: var(--accent-dark);
+    font-size: 2rem;
+}
+.enroll-success h3 { color: var(--ink-deep); margin-bottom: 0.5rem; }
+.enroll-success .sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.75rem; }
+
+.referral-callout {
+    text-align: left;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.35rem;
+}
+.referral-callout p { color: var(--text); font-size: 0.95rem; margin-bottom: 1rem; }
+.referral-callout p i { color: var(--accent-dark); margin-right: 0.35rem; }
+
+.referral-box { display: flex; gap: 0.6rem; align-items: stretch; }
+.referral-link {
+    flex: 1; min-width: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 0.85rem;
+    font-size: 0.9rem;
+    color: var(--ink-deep);
+    background: var(--white);
+}
+.copy-btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    white-space: nowrap;
+    border: none; cursor: pointer;
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem; font-weight: 600;
+    background: var(--ink); color: var(--white);
+    transition: var(--transition);
+}
+.copy-btn:hover { background: var(--ink-dark); }
+.copy-btn.copied { background: var(--accent-dark); }
+
+@media (max-width: 520px) {
+    .referral-box { flex-direction: column; }
+    .copy-btn { justify-content: center; }
+}
+
 /* ============================ Animations ============================ */
 .fade-up {
     opacity: 0;

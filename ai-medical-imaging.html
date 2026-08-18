@@ -330,9 +330,10 @@
                 </div>
 
                 <div class="form-card fade-up">
+                    <div id="enrolFormWrap">
                     <h3>Enrolment request</h3>
                     <p class="sub">We'll reply to confirm your seat, usually within 24 hours.</p>
-                    <form action="https://formsubmit.co/ahmad.m.mustapha@hotmail.com" method="POST">
+                    <form id="enrolForm" action="https://formsubmit.co/ahmad.m.mustapha@hotmail.com" method="POST">
                         <!-- FormSubmit settings -->
                         <input type="hidden" name="_subject" value="New AIxMED enrolment request">
                         <input type="hidden" name="course" value="AIxMED Intensive Bootcamp (in-person, Sep 21–Oct 2 2026, $150)">
@@ -372,6 +373,11 @@
                         </div>
 
                         <div class="form-field">
+                            <label for="referred_by" id="referredByLabel">Referred by</label>
+                            <input type="text" id="referred_by" name="referred_by" placeholder="Referred By">
+                        </div>
+
+                        <div class="form-field">
                             <label for="message">Anything you'd like us to know?</label>
                             <textarea id="message" name="message" placeholder="Your goals, Python experience, questions…"></textarea>
                         </div>
@@ -379,6 +385,22 @@
                         <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit enrolment request</button>
                         <p class="form-note">By submitting, you agree to be contacted about AIxMED. No spam, ever.</p>
                     </form>
+                    </div>
+
+                    <!-- Success message (shown after submit) -->
+                    <div id="enrolSuccess" class="enroll-success" hidden>
+                        <div class="success-icon"><i class="fas fa-circle-check"></i></div>
+                        <h3>Registration successful!</h3>
+                        <p class="sub">Thanks for enrolling in AIxMED. We'll reply within 24 hours to confirm your seat and share payment details.</p>
+
+                        <div class="referral-callout">
+                            <p><i class="fas fa-gift"></i> <strong>Earn $15 off your fee.</strong> Share your personal link with colleagues. For every person who registers through it, you get $15 off.</p>
+                            <div class="referral-box">
+                                <input type="text" id="referralLink" class="referral-link" readonly>
+                                <button type="button" id="copyReferral" class="copy-btn"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -429,6 +451,91 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+    // ============================ AIxMED referral + enrolment ============================
+    (function () {
+        const form = document.getElementById('enrolForm');
+        if (!form) return;
+
+        const params = new URLSearchParams(window.location.search);
+        const referredByInput = document.getElementById('referred_by');
+        const referredByLabel = document.getElementById('referredByLabel');
+
+        // Pre-fill and lock the "Referred by" field when arriving through a referral link
+        const ref = (params.get('ref') || '').trim();
+        if (ref && referredByInput) {
+            referredByInput.value = ref;
+            referredByInput.readOnly = true;
+            referredByInput.classList.add('is-locked');
+            referredByInput.removeAttribute('placeholder');
+            if (referredByLabel) referredByLabel.textContent = 'Referred by (Referrer)';
+        }
+
+        function buildReferralLink(email) {
+            const base = window.location.origin + window.location.pathname;
+            return base + '?ref=' + encodeURIComponent(email);
+        }
+
+        function showSuccess(email) {
+            const wrap = document.getElementById('enrolFormWrap');
+            const success = document.getElementById('enrolSuccess');
+            const linkInput = document.getElementById('referralLink');
+            if (linkInput) linkInput.value = buildReferralLink(email);
+            if (wrap) wrap.hidden = true;
+            if (success) {
+                success.hidden = false;
+                success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const email = (form.querySelector('#email') || {}).value || '';
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
+            }
+
+            fetch('https://formsubmit.co/ajax/ahmad.m.mustapha@hotmail.com', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(form)
+            })
+                .then(function (res) { return res.json(); })
+                .then(function () { showSuccess(email.trim()); })
+                .catch(function () {
+                    // On failure, fall back to a normal submit so the request is not lost
+                    form.submit();
+                });
+        });
+
+        // Copy referral link to clipboard
+        const copyBtn = document.getElementById('copyReferral');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function () {
+                const linkInput = document.getElementById('referralLink');
+                if (!linkInput) return;
+                const done = function () {
+                    copyBtn.classList.add('copied');
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(function () {
+                        copyBtn.classList.remove('copied');
+                        copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                    }, 2000);
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(linkInput.value).then(done, function () {
+                        linkInput.select(); document.execCommand('copy'); done();
+                    });
+                } else {
+                    linkInput.select(); document.execCommand('copy'); done();
+                }
+            });
+        }
+    })();
+    </script>
 </body>
 
 </html>
