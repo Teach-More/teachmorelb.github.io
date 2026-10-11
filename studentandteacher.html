@@ -152,6 +152,10 @@
                                     <input type="text" id="payment" name="payment" placeholder="مثلاً: 100$" required>
                                 </div>
 
+                                <!-- Honeypot: hidden from people, bots fill it -->
+                                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"
+                                    aria-hidden="true" style="position:absolute;left:-9999px;">
+
                                 <p class="form-error" id="formError" hidden>الرجاء تعبئة جميع الحقول بشكل صحيح.</p>
 
                                 <button type="submit" class="btn btn-primary"><i class="fab fa-whatsapp"></i> أرسل الطلب عبر واتساب</button>
@@ -225,9 +229,27 @@
         // Google Apps Script web app URL that appends each request to the sheet
         const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbynuW843Waj9fhuKK9jm_aAeGWwDYEKwX8NpIfS8iuJnss4g3gzvqsDoRUqXzUrDPSb/exec';
         const WHATSAPP_NUMBER = '96171277970';
+        // reCAPTCHA v3 site key (public); the secret key lives only in the Apps Script
+        const RECAPTCHA_SITE_KEY = '6Lc1Q-otAAAAAN67tQ-BboBvu_TX_8dzaFwZg-SS';
 
         const form = document.getElementById('requestForm');
         if (!form) return;
+
+        if (RECAPTCHA_SITE_KEY) {
+            const rc = document.createElement('script');
+            rc.src = 'https://www.google.com/recaptcha/api.js?render=' + RECAPTCHA_SITE_KEY;
+            rc.async = true;
+            document.head.appendChild(rc);
+        }
+
+        function getRecaptchaToken() {
+            if (!RECAPTCHA_SITE_KEY || !window.grecaptcha) return Promise.resolve('');
+            return new Promise(function (resolve) {
+                grecaptcha.ready(function () {
+                    grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' }).then(resolve, function () { resolve(''); });
+                });
+            });
+        }
 
         const subjectType = document.getElementById('subjectType');
         const subjectsField = document.getElementById('subjectsField');
@@ -298,10 +320,11 @@
 
             // Apps Script does not return CORS headers, so send as a simple no-cors form post.
             // Open WhatsApp either way so the request is never lost.
-            fetch(SHEET_ENDPOINT, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: new URLSearchParams(data)
+            getRecaptchaToken().then(function (token) {
+                const body = new URLSearchParams(data);
+                body.append('recaptcha', token);
+                body.append('website', val('website'));
+                return fetch(SHEET_ENDPOINT, { method: 'POST', mode: 'no-cors', body: body });
             }).then(showSuccess, showSuccess);
         });
     })();
