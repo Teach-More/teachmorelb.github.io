@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>اطلب معلّم(ة) | TeachMore</title>
+    <meta name="description"
+        content="اطلب معلّماً أو معلّمة لابنك أو ابنتك عبر TeachMore. املأ الطلب وسننشره على قناة تلميذ و استاذ على واتساب.">
+    <link rel="canonical" href="https://teachmorelb.com/studentandteacher">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="TeachMore"></a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#matching" class="active">Matching</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main dir="rtl" lang="ar" class="rtl">
+        <!-- Page hero -->
+        <header class="page-hero">
+            <div class="container fade-up">
+                <nav class="breadcrumb"><a href="index.html">الرئيسية</a> &nbsp;/&nbsp; اطلب معلّم(ة)</nav>
+                <span class="eyebrow" style="justify-content:center;">قناة تلميذ و استاذ</span>
+                <h1>اطلب معلّم(ة) لتلميذك</h1>
+                <p>املأ الطلب أدناه، وسنرسل التفاصيل عبر واتساب لننشرها على قناة تلميذ و استاذ ونصلك بالمعلّم(ة)
+                    المناسب(ة).</p>
+            </div>
+        </header>
+
+        <!-- Request form -->
+        <section class="enroll" id="request">
+            <div class="container">
+                <div class="enroll-grid">
+                    <div class="enroll-copy fade-up">
+                        <span class="eyebrow">كيف يعمل؟</span>
+                        <h2>ثلاث خطوات فقط</h2>
+                        <p>نحفظ طلبك ثم نفتح لك واتساب مع رسالة جاهزة. أرسلها كما هي وسنتولى الباقي.</p>
+                        <ul class="points">
+                            <li><i class="fas fa-circle-check"></i> املأ تفاصيل التلميذ(ة) والمواد</li>
+                            <li><i class="fas fa-circle-check"></i> أرسل الرسالة الجاهزة على واتساب</li>
+                            <li><i class="fas fa-circle-check"></i> ننشر الطلب على القناة ونصلك بالمعلّم(ة)</li>
+                        </ul>
+                        <a href="https://whatsapp.com/channel/0029Vb94oC3HAdNeLfho9l29" target="_blank" rel="noopener"
+                            class="btn btn-accent channel-btn"><i class="fab fa-whatsapp"></i> انضم إلى القناة</a>
+                    </div>
+
+                    <div class="form-card fade-up">
+                        <div id="requestFormWrap">
+                            <h3>طلب معلّم(ة)</h3>
+                            <p class="sub">جميع الحقول مطلوبة.</p>
+                            <form id="requestForm" novalidate>
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="name">الاسم <span class="req">*</span></label>
+                                        <input type="text" id="name" name="name" autocomplete="name" required>
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="phone">رقم الهاتف <span class="req">*</span></label>
+                                        <input type="tel" id="phone" name="phone" dir="ltr" inputmode="tel"
+                                            autocomplete="tel" placeholder="71 123456" pattern="[+0-9\s\-]{7,}" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="area">المنطقة <span class="req">*</span></label>
+                                        <input type="text" id="area" name="area" placeholder="مثلاً: الحمرا، بيروت" required>
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="grade">الصف <span class="req">*</span></label>
+                                        <select id="grade" name="grade" required>
+                                            <option value="" disabled selected>اختر الصف</option>
+                                            <option value="KG1">KG1</option>
+                                            <option value="KG2">KG2</option>
+                                            <option value="KG3">KG3</option>
+                                            <option value="الأول">الأول</option>
+                                            <option value="الثاني">الثاني</option>
+                                            <option value="الثالث">الثالث</option>
+                                            <option value="الرابع">الرابع</option>
+                                            <option value="الخامس">الخامس</option>
+                                            <option value="السادس">السادس</option>
+                                            <option value="السابع">السابع</option>
+                                            <option value="الثامن">الثامن</option>
+                                            <option value="التاسع">التاسع</option>
+                                            <option value="الأول ثانوي">الأول ثانوي</option>
+                                            <option value="الثاني ثانوي">الثاني ثانوي</option>
+                                            <option value="الثالث ثانوي">الثالث ثانوي</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="subjectType">المواد <span class="req">*</span></label>
+                                    <select id="subjectType" name="subjectType" required>
+                                        <option value="" disabled selected>اختر</option>
+                                        <option value="أجندة">أجندة (كل المواد)</option>
+                                        <option value="specific">مواد محددة</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-field" id="subjectsField" hidden>
+                                    <label for="subjects">المواد المطلوبة <span class="req">*</span></label>
+                                    <input type="text" id="subjects" name="subjects" placeholder="مثلاً: رياضيات، فيزياء">
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="language">اللغة <span class="req">*</span></label>
+                                        <select id="language" name="language" required>
+                                            <option value="" disabled selected>اختر اللغة</option>
+                                            <option value="انكليزي">انكليزي</option>
+                                            <option value="فرنسي">فرنسي</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="teacher">أفضّل <span class="req">*</span></label>
+                                        <select id="teacher" name="teacher" required>
+                                            <option value="" disabled selected>اختر</option>
+                                            <option value="معلمة">معلمة</option>
+                                            <option value="معلم">معلم</option>
+                                            <option value="لا تفضيل">لا تفضيل</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="payment">الدفعة الشهرية <span class="req">*</span></label>
+                                    <input type="text" id="payment" name="payment" placeholder="مثلاً: 100$" required>
+                                </div>
+
+                                <p class="form-error" id="formError" hidden>الرجاء تعبئة جميع الحقول بشكل صحيح.</p>
+
+                                <button type="submit" class="btn btn-primary"><i class="fab fa-whatsapp"></i> أرسل الطلب عبر واتساب</button>
+                                <p class="form-note">بعد الإرسال سيُفتح واتساب مع رسالة جاهزة. اضغط إرسال لإتمام الطلب.</p>
+                            </form>
+                        </div>
+
+                        <!-- Success message (shown after submit) -->
+                        <div id="requestSuccess" class="enroll-success" hidden>
+                            <div class="success-icon"><i class="fas fa-circle-check"></i></div>
+                            <h3>تم حفظ طلبك!</h3>
+                            <p class="sub">إذا لم يُفتح واتساب تلقائياً، اضغط على الزر أدناه وأرسل الرسالة.</p>
+                            <a id="whatsappLink" class="btn btn-primary" href="#" target="_blank" rel="noopener"><i
+                                    class="fab fa-whatsapp"></i> افتح واتساب</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand footer-section">
+                    <img src="assets/logo.png" alt="TeachMore">
+                    <p class="footer-description">Empowering education and connecting futures. Your trusted partner for
+                        teacher matching and instructor-led courses.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61578971036355" target="_blank" rel="noopener"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/96171277970" target="_blank" rel="noopener" aria-label="WhatsApp"><i
+                                class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Matching</h4>
+                    <ul>
+                        <li><a href="studentandteacher.html">Request a Teacher</a></li>
+                        <li><a href="https://chat.whatsapp.com/KwsKKcNXwqX7M5Out2ARgs" target="_blank" rel="noopener">K-12 Matching</a></li>
+                        <li><a href="https://chat.whatsapp.com/IwwgOROMS3v5KWUKy29mbH" target="_blank" rel="noopener">Uni Tutoring</a></li>
+                        <li><a href="https://chat.whatsapp.com/Fd8hXQdgwLoE1ZRHeR8HTT" target="_blank" rel="noopener">Workshops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="courses.html">All Courses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#matching">Matching</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TeachMore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    // ============================ Student & teacher request ============================
+    (function () {
+        // Google Apps Script web app URL that appends each request to the sheet
+        const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbynuW843Waj9fhuKK9jm_aAeGWwDYEKwX8NpIfS8iuJnss4g3gzvqsDoRUqXzUrDPSb/exec';
+        const WHATSAPP_NUMBER = '96171277970';
+
+        const form = document.getElementById('requestForm');
+        if (!form) return;
+
+        const subjectType = document.getElementById('subjectType');
+        const subjectsField = document.getElementById('subjectsField');
+        const subjectsInput = document.getElementById('subjects');
+        const formError = document.getElementById('formError');
+
+        subjectType.addEventListener('change', function () {
+            const specific = subjectType.value === 'specific';
+            subjectsField.hidden = !specific;
+            subjectsInput.required = specific;
+            if (specific) subjectsInput.focus();
+        });
+
+        function buildMessage(data) {
+            const wanted = data.teacher === 'لا تفضيل' ? 'معلم(ة)' : data.teacher;
+            return [
+                'مطلوب ' + wanted,
+                'لتلميذ(ة) في الصف ' + data.grade,
+                'المواد: ' + data.subject,
+                'اللغة: ' + data.language,
+                'الدفع: ' + data.payment,
+                'للتواصل: 71 277970',
+                '',
+                'قناة تلميذ و استاذ (Teachmore)',
+                'للإنضمام: https://whatsapp.com/channel/0029Vb94oC3HAdNeLfho9l29',
+                'لطلب معلم(ة): www.teachmorelb.com/studentandteacher'
+            ].join('\n');
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!form.checkValidity()) {
+                formError.hidden = false;
+                form.reportValidity();
+                return;
+            }
+            formError.hidden = true;
+
+            const val = function (id) { return document.getElementById(id).value.trim(); };
+            const data = {
+                name: val('name'),
+                phone: val('phone'),
+                area: val('area'),
+                grade: val('grade'),
+                subject: subjectType.value === 'specific' ? val('subjects') : subjectType.value,
+                language: val('language'),
+                teacher: val('teacher'),
+                payment: val('payment')
+            };
+
+            const waLink = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(buildMessage(data));
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جارٍ الإرسال…';
+
+            const showSuccess = function () {
+                document.getElementById('whatsappLink').href = waLink;
+                document.getElementById('requestFormWrap').hidden = true;
+                const success = document.getElementById('requestSuccess');
+                success.hidden = false;
+                success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                window.location.href = waLink;
+            };
+
+            if (!SHEET_ENDPOINT) { showSuccess(); return; }
+
+            // Apps Script does not return CORS headers, so send as a simple no-cors form post.
+            // Open WhatsApp either way so the request is never lost.
+            fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: new URLSearchParams(data)
+            }).then(showSuccess, showSuccess);
+        });
+    })();
+    </script>
+</body>
+
+</html>

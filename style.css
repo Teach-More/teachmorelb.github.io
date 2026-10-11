@@ -1165,3 +1165,21 @@ a { color: inherit; }
     .service-item, .form-card, .instructor-card { padding: 1.75rem; }
     .module-body ul { padding-left: 1.6rem; }
 }
+
+/* ============================ Arabic (RTL) pages ============================ */
+.rtl,
+.rtl h1, .rtl h2, .rtl h3, .rtl h4,
+.rtl .eyebrow, .rtl .btn,
+.rtl .form-field input,
+.rtl .form-field textarea,
+.rtl .form-field select {
+    font-family: 'Tajawal', 'Inter', sans-serif;
+}
+.rtl .eyebrow { letter-spacing: 0; }
+.rtl .form-field input[dir="ltr"] { text-align: right; }
+.rtl .channel-btn { margin-top: 0.5rem; }
+.form-error {
+    color: #b3261e;
+    font-size: 0.88rem;
+    margin-bottom: 0.75rem;
+}
